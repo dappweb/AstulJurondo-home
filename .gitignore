@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+.codex-docx-render/
+.playwright-cli/
+output/
+
+.env
+.env.*
