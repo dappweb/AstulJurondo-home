@@ -397,6 +397,12 @@ function App() {
       </header>
 
       <section className="hero" id="home" data-section="home">
+        <img
+          className="hero-art"
+          src="/images/astuljurondo-hero.webp"
+          alt=""
+          aria-hidden="true"
+        />
         <TopologyCanvas />
         <div className="scanlines" />
         <div className="hero-grid">
@@ -426,6 +432,11 @@ function App() {
             </div>
           </div>
           <aside className="hero-panel visual-panel reveal" aria-label="居容台视觉符号">
+            <img
+              className="panel-art"
+              src="/images/astuljurondo-symbol-core.webp"
+              alt="居容台符号核心：骷髅、盾牌、旗帜和拓扑符号"
+            />
             <span>Symbol Core</span>
             <strong>AJ</strong>
             <p>骷髅、盾牌、旗帜、拓扑字母、模因节点与霓虹光谱，构成 AstulJurondo 的第一视觉识别。</p>
@@ -501,6 +512,9 @@ function App() {
           <p>Language System</p>
           <h2>弗洛达语・拓扑文字</h2>
         </div>
+        <figure className="wide-art">
+          <img src="/images/astuljurondo-language.webp" alt="弗洛达语与拓扑文字的霓虹字母档案" />
+        </figure>
         <div className="glyph-board">
           {glyphs.map(glyph => (
             <button className="glyph" key={glyph}>
@@ -519,6 +533,9 @@ function App() {
           <p>Visual Forms</p>
           <h2>图像表达形式</h2>
         </div>
+        <figure className="wide-art symbol-art">
+          <img src="/images/astuljurondo-symbol-core.webp" alt="居容台骷髅、盾牌、旗帜与符号系统" />
+        </figure>
         <div className="gallery-grid">
           {visualForms.map((item, index) => (
             <article className="gallery-card symbol-card" key={item.title}>
@@ -535,6 +552,9 @@ function App() {
           <p>Narrative Media</p>
           <h2>漫画・展览・视频</h2>
         </div>
+        <figure className="wide-art narrative-art">
+          <img src="/images/astuljurondo-narrative.webp" alt="居容台漫画、展览与视频叙事空间" />
+        </figure>
         <div className="media-grid">
           {narratives.map((item, index) => (
             <article className="media-card" key={item.title}>
