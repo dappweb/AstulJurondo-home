@@ -177,6 +177,81 @@ const narratives = [
   }
 ];
 
+const assetUseCases = [
+  {
+    title: "赛博朋克居容台吉祥物",
+    category: "角色/IP",
+    placement: "首页首屏、加载状态、社交分享封面",
+    demo: "适合作为网站第一视觉锚点，让访客先记住角色，再进入哲学与语言系统。",
+    image: "/images/astuljurondo-hero.webp",
+    source: "https://www.zcool.com.cn/work/ZNzM0OTAyNDg=.html"
+  },
+  {
+    title: "居容台吉祥物 / 表情包",
+    category: "传播素材",
+    placement: "页脚彩蛋、移动端菜单、作品分享卡片",
+    demo: "适合承担轻互动和传播情绪，把严肃世界观变成可以收藏、转发和二创的入口。",
+    image: "/images/astuljurondo-narrative.webp",
+    source: "https://www.zcool.com.cn/work/ZNjY5NDk0NTI=.html"
+  },
+  {
+    title: "弗洛达语 / 语言体系",
+    category: "文字系统",
+    placement: "交互字母表、章节标题、符号解释页",
+    demo: "适合做可点击的字母档案，让语言从背景设定变成用户能探索的视觉界面。",
+    image: "/images/astuljurondo-language.webp",
+    source: "https://www.zcool.com.cn/work/ZNjU3NjcwMDg=.html"
+  },
+  {
+    title: "字母模因图腾 / 模因工程图腾",
+    category: "符号图腾",
+    placement: "导航纹章、按钮状态、世界观地图节点",
+    demo: "适合承担网站识别系统，把分散的概念统一成可重复出现的视觉符号。",
+    image: "/images/astuljurondo-symbol-core.webp",
+    source: "https://www.zcool.com.cn/work/ZNjU4Mjc3MDg=.html"
+  }
+];
+
+const assetDecks = [
+  {
+    title: "角色与吉祥物",
+    works: "赛博朋克居容台吉祥物、居容台吉祥物、居容台生物",
+    use: "首页主视觉、角色介绍、404/加载状态、社交平台预览图"
+  },
+  {
+    title: "语言与文字",
+    works: "弗洛达语、语言体系、拓扑字母、字母字体绘本",
+    use: "交互字母表、章节标题、术语解释、世界观词典"
+  },
+  {
+    title: "图腾与图标",
+    works: "字母模因图腾、模因工程图腾、逻辑体系图标、游戏 UI",
+    use: "导航识别、卡片标识、按钮 hover、节点地图"
+  },
+  {
+    title: "体系绘本",
+    works: "人格体系、逻辑体系、法律体系、社会体系、经济体系绘本",
+    use: "世界观章节、长文阅读页、横向档案墙"
+  },
+  {
+    title: "表情包",
+    works: "居容台表情包第二版、居容台吉祥物表情包",
+    use: "传播素材页、下载卡片、页脚彩蛋、社群入口"
+  },
+  {
+    title: "概念原画",
+    works: "浮世绘风格角色、数字哲学、顶点哲学、信条",
+    use: "作品集封面、活动海报、专题页背景、展览记录"
+  }
+];
+
+const rolloutSteps = [
+  "先保留站酷原作品链接，网站图片只使用已授权的本地文件。",
+  "把素材按角色、语言、图腾、体系绘本、表情包、概念原画建成数据表。",
+  "首页只放 1-2 个最强视觉，其余进入作品档案和世界观章节。",
+  "后续替换图片时，只需要更新 public/images/works 与素材数据。"
+];
+
 function useActiveSection() {
   const [active, setActive] = useState("home");
 
@@ -330,6 +405,7 @@ function App() {
       { id: "meme", label: "模因" },
       { id: "language", label: "文字" },
       { id: "visual", label: "图像" },
+      { id: "assets", label: "素材" },
       { id: "narrative", label: "叙事" }
     ],
     []
@@ -542,6 +618,57 @@ function App() {
               {index % 3 === 0 ? <Shield size={22} /> : index % 3 === 1 ? <Sparkles size={22} /> : <Network size={22} />}
               <h3>{item.title}</h3>
               <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section assets-section" id="assets" data-section="assets">
+        <div className="section-heading">
+          <p>Asset Plan</p>
+          <h2>站酷素材应用方案</h2>
+        </div>
+        <div className="asset-intro">
+          <figure className="asset-focus">
+            <img src="/images/astuljurondo-hero.webp" alt="AstulJurondo 角色主视觉演示" />
+            <figcaption>
+              <span>演示策略</span>
+              <strong>角色做入口，语言做结构，图腾做识别，绘本做深度内容。</strong>
+            </figcaption>
+          </figure>
+          <div className="asset-rollout" aria-label="素材上线步骤">
+            {rolloutSteps.map((step, index) => (
+              <div className="rollout-row" key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="usecase-grid" aria-label="可直接用于网站的素材演示">
+          {assetUseCases.map(item => (
+            <article className="usecase-card" key={item.title}>
+              <img src={item.image} alt={`${item.title} 在网站中的应用演示`} />
+              <div>
+                <span>{item.category}</span>
+                <h3>{item.title}</h3>
+                <p>{item.demo}</p>
+                <em>{item.placement}</em>
+                <a href={item.source} target="_blank" rel="noreferrer">
+                  查看原作品
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="asset-deck-grid">
+          {assetDecks.map((deck, index) => (
+            <article className="asset-deck" key={deck.title}>
+              {index % 3 === 0 ? <Images size={22} /> : index % 3 === 1 ? <Languages size={22} /> : <Network size={22} />}
+              <h3>{deck.title}</h3>
+              <p>{deck.works}</p>
+              <strong>{deck.use}</strong>
             </article>
           ))}
         </div>
